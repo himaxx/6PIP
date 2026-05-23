@@ -38,29 +38,29 @@ export default function ResultsScreen({
     const top1 = sorted[0];
     const top2 = sorted[1];
 
-    // Determine Achievements list
+    // Determine Achievements list (Refined professional labels)
     const achievements = [];
-    if (totalXP >= 120) achievements.push({ emoji: "🏆", label: "Gold Player" });
-    else if (totalXP >= 80) achievements.push({ emoji: "🥈", label: "Silver Player" });
-    else achievements.push({ emoji: "🥉", label: "Bronze Player" });
+    if (totalXP >= 120) achievements.push({ emoji: "🏆", label: "Gold Category" });
+    else if (totalXP >= 80) achievements.push({ emoji: "🥈", label: "Silver Category" });
+    else achievements.push({ emoji: "🥉", label: "Bronze Category" });
 
     if (maxStreak >= 10) achievements.push({ emoji: "🔥", label: `${maxStreak} Streak!` });
     
     const strongCount = results.filter(r => r.level === "Strong").length;
-    if (strongCount >= 2) achievements.push({ emoji: "💪", label: "Multi-Strong" });
+    if (strongCount >= 2) achievements.push({ emoji: "💪", label: "Multi-Strong Needs" });
     
     const hasPerfectScore = results.some(r => r.score === 25);
     if (hasPerfectScore) achievements.push({ emoji: "⭐", label: "Perfect Score!" });
     
-    achievements.push({ emoji: selectedAvatar, label: `${selectedAvatarName} Player` });
+    achievements.push({ emoji: selectedAvatar, label: `${selectedAvatarName} Quest` });
 
-    // WhatsApp Share logic
+    // WhatsApp Share logic (Cleaned up point references)
     const handleShare = () => {
         let text = `🎮 *हमसफर 6PIP Personality Quest — Result*\n`;
         text += `अखिल भारतीय तेरापंथ महिला मंडल\n`;
         text += `━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
         text += `${selectedAvatar} *Player:* ${selectedAvatarName}\n`;
-        text += `⚡ *Total XP:* ${totalXP}/150\n\n`;
+        text += `⚡ *Total Points:* ${totalXP}/150\n\n`;
         text += `✨ *Personality Type:*\n`;
         text += `${top1.emoji} ${top1.titleHindi.split(" (")[0]} + ${top2.emoji} ${top2.titleHindi.split(" (")[0]}\n\n`;
         text += `📊 *Score Card:*\n`;
@@ -88,9 +88,9 @@ export default function ResultsScreen({
             {/* Trophy Header */}
             <div className="results-hero">
                 <div className="trophy-glow">
-                    <div className="trophy-icon" id="results-avatar">{selectedAvatar}</div>
+                    <div className="trophy-icon" id="results-avatar">🏆</div>
                 </div>
-                <div className="final-xp-badge" id="final-xp-badge">{totalXP} XP Earned! ⚡</div>
+                <div className="final-xp-badge" id="final-xp-badge">{totalXP} Points Earned! ⚡</div>
                 <h2 className="results-title">Quest Complete! 🎉</h2>
                 <p className="results-org">अखिल भारतीय तेरापंथ महिला मंडल – हमसफर</p>
             </div>

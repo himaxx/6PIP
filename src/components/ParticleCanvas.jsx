@@ -19,16 +19,27 @@ export default function ParticleCanvas() {
 
         const createParticles = () => {
             particles = [];
-            const count = Math.min(60, Math.floor(window.innerWidth / 12));
+            // For slow-moving bokeh, fewer large orbs look extremely clean and run perfectly
+            const count = Math.min(18, Math.floor(window.innerWidth / 60));
+            const colors = [
+                'rgba(99, 102, 241, 0.08)',  // Indigo
+                'rgba(244, 63, 94, 0.06)',   // Rose
+                'rgba(217, 119, 6, 0.06)',   // Amber
+                'rgba(13, 148, 136, 0.06)',  // Teal
+                'rgba(16, 185, 129, 0.06)'   // Emerald
+            ];
+
             for (let i = 0; i < count; i++) {
                 particles.push({
                     x: Math.random() * canvas.width,
                     y: Math.random() * canvas.height,
-                    r: Math.random() * 2 + 0.5,
-                    dx: (Math.random() - 0.5) * 0.4,
-                    dy: (Math.random() - 0.5) * 0.4,
-                    alpha: Math.random() * 0.5 + 0.1,
-                    color: ['#7c3aed', '#ec4899', '#f59e0b', '#06b6d4', '#10b981'][Math.floor(Math.random() * 5)]
+                    // Large premium bokeh orbs
+                    r: Math.random() * 30 + 20, 
+                    // Extremely slow, soothing drift
+                    dx: (Math.random() - 0.5) * 0.18,
+                    dy: (Math.random() - 0.5) * 0.18,
+                    alpha: Math.random() * 0.5 + 0.3,
+                    color: colors[Math.floor(Math.random() * colors.length)]
                 });
             }
         };
@@ -38,10 +49,12 @@ export default function ParticleCanvas() {
             particles.forEach(p => {
                 p.x += p.dx;
                 p.y += p.dy;
-                if (p.x < 0) p.x = canvas.width;
-                if (p.x > canvas.width) p.x = 0;
-                if (p.y < 0) p.y = canvas.height;
-                if (p.y > canvas.height) p.y = 0;
+                
+                // Wrap around edges smoothly
+                if (p.x < -p.r) p.x = canvas.width + p.r;
+                if (p.x > canvas.width + p.r) p.x = -p.r;
+                if (p.y < -p.r) p.y = canvas.height + p.r;
+                if (p.y > canvas.height + p.r) p.y = -p.r;
                 
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);

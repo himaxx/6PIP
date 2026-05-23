@@ -53,7 +53,7 @@ export default function App() {
             setHintShown(true);
         }
 
-        // Award XP if first-time answering this question
+        // Award Points if first-time answering this question
         if (prevAnswer === undefined) {
             setTotalXP(prev => prev + score);
             setStreak(prev => {
@@ -63,7 +63,7 @@ export default function App() {
                 }
                 return nextStreak;
             });
-            showXPToast(`+${score} XP ⚡`);
+            showXPToast(`+${score} Points ⚡`);
         }
 
         // Auto-advance after 600ms

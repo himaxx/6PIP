@@ -46,7 +46,7 @@ export default function QuizScreen({
                 <div className="hud-left">
                     <span id="hud-avatar">{selectedAvatar}</span>
                     <div className="hud-xp-block">
-                        <span className="hud-xp-label">XP</span>
+                        <span className="hud-xp-label">Points</span>
                         <span className="hud-xp-val" id="hud-xp">{totalXP}</span>
                     </div>
                 </div>
@@ -71,7 +71,7 @@ export default function QuizScreen({
                         <span className="cat-stage">Round {catIdx + 1} of {pipData.length}</span>
                         <span className="cat-name">{cat.titleHindi.split(" (")[0]}</span>
                     </div>
-                    <div className="cat-xp-badge">+5 XP each</div>
+                    <div className="cat-xp-badge">+5 Points each</div>
                 </div>
                 
                 {/* Category Progress Dots */}
@@ -126,7 +126,7 @@ export default function QuizScreen({
                     <div className="round-complete-card">
                         <div className="rc-emoji">{overlayCat.emoji}</div>
                         <h2 className="rc-title">{overlayCat.titleHindi.split(" (")[0]} Complete!</h2>
-                        <p className="rc-score">Score: {catScore}/25 · +{catScore} XP!</p>
+                        <p className="rc-score">Score: {catScore}/25 · +{catScore} Points!</p>
                         <div className="rc-stars">{stars}</div>
                         <button className="btn-next-round" onClick={onCloseRoundOverlay}>Next Round ➔</button>
                     </div>

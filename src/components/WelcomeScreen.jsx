@@ -17,14 +17,14 @@ export default function WelcomeScreen({ selectedAvatar, onSelectAvatar, onStart 
                 Humsafar Initiative · ABTMM
             </div>
             
-            <div className="game-icon-hero" id="hero-icon">🎮</div>
+            <div className="game-icon-hero" id="hero-icon">💑</div>
             
-            <h1 class="game-title">हमसफर</h1>
+            <h1 className="game-title">हमसफर</h1>
             <p className="game-tagline">6PIP <span className="highlight">Personality</span> Quest</p>
             
             <p className="game-desc">
                 बोरिंग survey नहीं — यह है एक <strong>personality game!</strong><br />
-                30 सवाल, XP points, badges और आपकी असली personality! 🏆
+                30 सवाल, Quest Points, badges और आपकी असली personality! 🏆
             </p>
 
             <div className="stats-row">
@@ -34,11 +34,11 @@ export default function WelcomeScreen({ selectedAvatar, onSelectAvatar, onStart 
                 </div>
                 <div className="stat-chip">
                     <span className="stat-num">150</span>
-                    <span className="stat-label">Max XP</span>
+                    <span className="stat-label">Max Points</span>
                 </div>
                 <div className="stat-chip">
                     <span className="stat-num">3</span>
-                    <span className="stat-label">Min</span>
+                    <span className="stat-label">Minutes</span>
                 </div>
             </div>
 
